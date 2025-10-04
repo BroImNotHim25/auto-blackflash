@@ -1,0 +1,28 @@
+local UserInputService = game:GetService("UserInputService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+-- Protect critical values with string obfuscation
+local keyToPress = Enum.KeyCode.Three
+local pressCount = 3
+local delays = {0.32, 0.35} -- delays between presses
+
+-- Protect function with obfuscated name but preserve functionality
+local function _0xABCDEF() -- This will be obfuscated but function preserved
+    VirtualInputManager:SendKeyEvent(true, keyToPress, false, game)
+    VirtualInputManager:SendKeyEvent(false, keyToPress, false, game)
+end
+
+-- Protect the main event handler with obfuscated structure
+local _0x123456 = function(input, gameProcessedEvent)
+    if not gameProcessedEvent and input.KeyCode == Enum.KeyCode.E then
+        for i = 1, pressCount do
+            _0xABCDEF()  -- Protected function call
+            if i < pressCount then
+                task.wait(delays[i])  -- Protected timing
+            end
+        end
+    end
+end
+
+-- Protect the connection
+UserInputService.InputBegan:Connect(_0x123456)
